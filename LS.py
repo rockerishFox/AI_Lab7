@@ -30,6 +30,23 @@ class LS:
             res.append(line)
         return res
 
+
+    """
+    :return: Matricea fara linia x si coloana y
+    """
+
+    def __remove(self, mat, x, y):
+        res = []
+        for i in range(len(mat)):
+            line = []
+            for j in range(len(mat[0])):
+                if i != x and j != y:
+                    line.append(mat[i][j])
+            if line:
+                res.append(line)
+        return res
+
+
     """
     :return: Matricea fara prima linie si coloana x 
     """
@@ -57,21 +74,6 @@ class LS:
                 line.append(x)
             res.append(line)
         return self.__transp(res)
-
-    """
-    :return: Matricea fara linia x si coloana y
-    """
-
-    def __remove(self, mat, x, y):
-        res = []
-        for i in range(len(mat)):
-            line = []
-            for j in range(len(mat[0])):
-                if i != x and j != y:
-                    line.append(mat[i][j])
-            if line:
-                res.append(line)
-        return res
 
     """
     :return: Determinantul matricei M ( DELTA (M) )
@@ -107,17 +109,21 @@ class LS:
         self.w = w
         return w
 
+
+    """
+    w = ( X ^ t  *  X ) * X ^ t * Y   
+    """
     def fit_tool(self, input, output):
         trans = np.array(input)
-        mat = np.array(input)
+        matrix = np.array(input)
         trans2 = trans.transpose()
-        mul = np.matmul(trans2, mat)
+        mul = np.matmul(trans2, matrix)
+
         invers = np.linalg.inv(mul)
         mat2 = np.matmul(invers, trans2)
         w = np.matmul(mat2, np.array(output))
 
         self.w = w
-
         return w
 
     """

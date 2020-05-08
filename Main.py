@@ -58,5 +58,6 @@ def main():
     error = mean_squared_error(test_outputs, computed_output)
     print("prediction error (tool): ", error)
 
-
+r = LS()
+r.fit_tool([[1,0],[2,5]],[[9]])
 main()
