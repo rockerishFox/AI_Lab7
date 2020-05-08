@@ -21,28 +21,28 @@ def main():
     test_inputs = [data_input[i] for i in test_index]
     test_outputs = [data_output[i] for i in test_index]
 
-    regressor = LS()
+    regresor = LS()
     print("Ce algoritm de regresie?")
     print("1 - Manual")
-    print("2 - With Tool")
+    print("2 - Tool")
     ans = input(">")
 
     if ans == "1":
-        regressor.fit_manual(train_inputs, train_outputs)
+        regresor.fit_manual(train_inputs, train_outputs)
     elif ans == "2":
-        regressor.fit_tool(train_inputs, train_outputs)
+        regresor.fit_tool(train_inputs, train_outputs)
 
     print("Modelul de regresie: \n"
-          " w0 = " + str(regressor.w[0]) + "\n"
-                                           " w1 = " + str(regressor.w[1]) + "\n"
-                                                                            " w2 = " + str(regressor.w[2]) + "\n")
+          " w0 = " + str(regresor.w[0]) + "\n"
+                                           " w1 = " + str(regresor.w[1]) + "\n"
+                                                                            " w2 = " + str(regresor.w[2]) + "\n")
 
-    computed_output = [regressor.predict(data) for data in test_inputs]
+    computed_output = [regresor.predict(data) for data in test_inputs]
 
     # generating graphs for the training session, test session, and both
-    plot(regressor, train_inputs, train_outputs)
-    plot(regressor, train_inputs, train_outputs, test_inputs, computed_output)
-    plot(regressor, train_inputs, train_outputs, test_inputs, computed_output, True)
+    plot(regresor, train_inputs, train_outputs)
+    plot(regresor, train_inputs, train_outputs, test_inputs, computed_output)
+    plot(regresor, train_inputs, train_outputs, test_inputs, computed_output, True)
 
     # calculating differences between predictions and real outputs
     error = 0.0
