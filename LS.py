@@ -111,7 +111,7 @@ class LS:
 
 
     """
-    w = ( X ^ t  *  X ) * X ^ t * Y   
+    w = ( X ^ t  *  X )^(-1) * X ^ t * Y   
     """
     def fit_tool(self, input, output):
         trans = np.array(input)
