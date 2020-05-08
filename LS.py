@@ -114,14 +114,12 @@ class LS:
     w = ( X ^ t  *  X )^(-1) * X ^ t * Y   
     """
     def fit_tool(self, input, output):
-        trans = np.array(input)
-        matrix = np.array(input)
-        trans2 = trans.transpose()
-        mul = np.matmul(trans2, matrix)
 
+        trans = np.array(input).transpose()
+        mul = np.matmul(trans, np.array(input))
         invers = np.linalg.inv(mul)
-        mat2 = np.matmul(invers, trans2)
-        w = np.matmul(mat2, np.array(output))
+        mat = np.matmul(invers, trans)
+        w = np.matmul(mat, np.array(output))
 
         self.w = w
         return w
